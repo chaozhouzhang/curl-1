@@ -220,7 +220,7 @@ static CURLcode ldap_connect(struct connectdata *conn, bool *done)
   ptr = hosturl + 4;
   if(conn->handler->flags & PROTOPT_SSL)
     *ptr++ = 's';
-  snprintf(ptr, sizeof(hosturl)-(ptr-hosturl), "://%s:%d",
+  msnprintf(ptr, sizeof(hosturl)-(ptr-hosturl), "://%s:%d",
            conn->host.name, conn->remote_port);
 
 #ifdef CURL_OPENLDAP_DEBUG

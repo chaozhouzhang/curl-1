@@ -462,7 +462,7 @@ CURLcode glob_url(URLGlob **glob, char *url, unsigned long *urlnum,
       char text[512];
       const char *t;
       if(glob_expand->pos) {
-        snprintf(text, sizeof(text), "%s in URL position %zu:\n%s\n%*s^",
+        msnprintf(text, sizeof(text), "%s in URL position %zu:\n%s\n%*s^",
                  glob_expand->error,
                  glob_expand->pos, url, glob_expand->pos - 1, " ");
         t = text;
@@ -563,7 +563,7 @@ CURLcode glob_next_url(char **globbed, URLGlob *glob)
     switch(pat->type) {
     case UPTSet:
       if(pat->content.Set.elements) {
-        snprintf(buf, buflen, "%s",
+        msnprintf(buf, buflen, "%s",
                  pat->content.Set.elements[pat->content.Set.ptr_s]);
         len = strlen(buf);
         buf += len;
@@ -578,7 +578,7 @@ CURLcode glob_next_url(char **globbed, URLGlob *glob)
       }
       break;
     case UPTNumRange:
-      snprintf(buf, buflen, "%0*lu",
+      msnprintf(buf, buflen, "%0*lu",
                pat->content.NumRange.padlength,
                pat->content.NumRange.ptr_n);
       len = strlen(buf);
@@ -653,7 +653,7 @@ CURLcode glob_match_url(char **result, char *filename, URLGlob *glob)
           appendlen = 1;
           break;
         case UPTNumRange:
-          snprintf(numbuf, sizeof(numbuf), "%0*lu",
+          msnprintf(numbuf, sizeof(numbuf), "%0*lu",
                    pat->content.NumRange.padlength,
                    pat->content.NumRange.ptr_n);
           appendthis = numbuf;

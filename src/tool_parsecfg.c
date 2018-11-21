@@ -60,7 +60,7 @@ int parseconfig(const char *filename, struct GlobalConfig *global)
     filename = CURLRC;   /* sensible default */
     if(home) {
       if(strlen(home) < (sizeof(filebuffer) - strlen(CURLRC))) {
-        snprintf(filebuffer, sizeof(filebuffer),
+        msnprintf(filebuffer, sizeof(filebuffer),
                  "%s%s%s", home, DIR_CHAR, CURLRC);
 
 #ifdef WIN32
@@ -87,7 +87,7 @@ int parseconfig(const char *filename, struct GlobalConfig *global)
               /* If we have enough space, build the RC filename */
               remaining = sizeof(filebuffer) - strlen(filebuffer);
               if(strlen(CURLRC) < remaining - 1) {
-                snprintf(lastdirchar, remaining,
+                msnprintf(lastdirchar, remaining,
                          "%s%s", DIR_CHAR, CURLRC);
                 /* Don't bother checking if it exists - we do
                  * that later

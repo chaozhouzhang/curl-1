@@ -1478,7 +1478,7 @@ static CURLcode add_haproxy_protocol_header(struct connectdata *conn)
     strcpy(tcp_version, "TCP4");
   }
 
-  snprintf(proxy_header,
+  msnprintf(proxy_header,
            sizeof(proxy_header),
            "PROXY %s %s %s %li %li\r\n",
            tcp_version,
@@ -1849,7 +1849,7 @@ CURLcode Curl_add_timecondition(struct Curl_easy *data,
    */
 
   /* format: "Tue, 15 Nov 1994 12:45:26 GMT" */
-  snprintf(datestr, sizeof(datestr),
+  msnprintf(datestr, sizeof(datestr),
            "%s: %s, %02d %s %4d %02d:%02d:%02d GMT\r\n",
            condp,
            Curl_wkday[tm->tm_wday?tm->tm_wday-1:6],
@@ -2292,7 +2292,7 @@ CURLcode Curl_http(struct connectdata *conn, bool *done)
           if(!*data->state.up.path && path[strlen(path) - 1] != '/') {
             *p++ = '/';
           }
-          snprintf(p, sizeof(ftp_typecode) - 1, ";type=%c",
+          msnprintf(p, sizeof(ftp_typecode) - 1, ";type=%c",
                    data->set.prefer_ascii ? 'a' : 'i');
         }
       }

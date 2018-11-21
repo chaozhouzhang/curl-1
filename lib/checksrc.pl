@@ -501,7 +501,7 @@ sub scanfile {
         if($l =~ /^(.*\W)
                    (gets|
                     strtok|
-                    v?sprintf|
+                    v?sprintf|snprintf|vsnprintf|
                     (str|_mbs|_tcs|_wcs)n?cat|
                     LoadLibrary(Ex)?(A|W)?)
                    \s*\(

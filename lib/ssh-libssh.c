@@ -1342,7 +1342,7 @@ static CURLcode myssh_statemach_act(struct connectdata *conn, bool *block)
               break;
             }
 
-            snprintf(sshc->readdir_linkPath, PATH_MAX, "%s%s", protop->path,
+            msnprintf(sshc->readdir_linkPath, PATH_MAX, "%s%s", protop->path,
                      sshc->readdir_filename);
 
             state(conn, SSH_SFTP_READDIR_LINK);
@@ -1406,7 +1406,7 @@ static CURLcode myssh_statemach_act(struct connectdata *conn, bool *block)
       }
       sshc->readdir_line = new_readdir_line;
 
-      sshc->readdir_currLen += snprintf(sshc->readdir_line +
+      sshc->readdir_currLen += msnprintf(sshc->readdir_line +
                                         sshc->readdir_currLen,
                                         sshc->readdir_totalLen -
                                         sshc->readdir_currLen,
@@ -1421,7 +1421,7 @@ static CURLcode myssh_statemach_act(struct connectdata *conn, bool *block)
       state(conn, SSH_SFTP_READDIR_BOTTOM);
       /* FALLTHROUGH */
     case SSH_SFTP_READDIR_BOTTOM:
-      sshc->readdir_currLen += snprintf(sshc->readdir_line +
+      sshc->readdir_currLen += msnprintf(sshc->readdir_line +
                                         sshc->readdir_currLen,
                                         sshc->readdir_totalLen -
                                         sshc->readdir_currLen, "\n");

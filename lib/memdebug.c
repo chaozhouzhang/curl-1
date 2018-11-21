@@ -504,7 +504,7 @@ void curl_memlog(const char *format, ...)
     return;
 
   va_start(ap, format);
-  nchars = vsnprintf(buf, LOGLINE_BUFSIZE, format, ap);
+  nchars = mvsnprintf(buf, LOGLINE_BUFSIZE, format, ap);
   va_end(ap);
 
   if(nchars > LOGLINE_BUFSIZE - 1)

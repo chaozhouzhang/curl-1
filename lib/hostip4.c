@@ -145,7 +145,7 @@ Curl_addrinfo *Curl_ipv4_resolve_r(const char *hostname,
     hints.ai_family = PF_INET;
     hints.ai_socktype = SOCK_STREAM;
     if(port) {
-      snprintf(sbuf, sizeof(sbuf), "%d", port);
+      msnprintf(sbuf, sizeof(sbuf), "%d", port);
       sbufptr = sbuf;
     }
 

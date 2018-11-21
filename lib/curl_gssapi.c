@@ -97,7 +97,7 @@ static size_t display_gss_error(OM_uint32 status, int type,
                                   &msg_ctx,
                                   &status_string);
     if(GSS_LOG_BUFFER_LEN > len + status_string.length + 3) {
-      len += snprintf(buf + len, GSS_LOG_BUFFER_LEN - len,
+      len += msnprintf(buf + len, GSS_LOG_BUFFER_LEN - len,
                       "%.*s. ", (int)status_string.length,
                       (char *)status_string.value);
     }

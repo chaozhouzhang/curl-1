@@ -409,7 +409,7 @@ CURLcode Curl_auth_create_ntlm_type1_message(struct Curl_easy *data,
 #else
 #define NTLM2FLAG 0
 #endif
-  snprintf((char *)ntlmbuf, NTLM_BUFSIZE,
+  msnprintf((char *)ntlmbuf, NTLM_BUFSIZE,
            NTLMSSP_SIGNATURE "%c"
            "\x01%c%c%c" /* 32-bit type = 1 */
            "%c%c%c%c"   /* 32-bit NTLM flag field */
@@ -678,7 +678,7 @@ CURLcode Curl_auth_create_ntlm_type3_message(struct Curl_easy *data,
   hostoff = useroff + userlen;
 
   /* Create the big type-3 message binary blob */
-  size = snprintf((char *)ntlmbuf, NTLM_BUFSIZE,
+  size = msnprintf((char *)ntlmbuf, NTLM_BUFSIZE,
                   NTLMSSP_SIGNATURE "%c"
                   "\x03%c%c%c"  /* 32-bit type = 3 */
 

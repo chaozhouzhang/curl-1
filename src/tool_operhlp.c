@@ -176,7 +176,7 @@ CURLcode get_url_file_name(char **filename, const char *url)
     char *tdir = curlx_getenv("CURL_TESTDIR");
     if(tdir) {
       char buffer[512]; /* suitably large */
-      snprintf(buffer, sizeof(buffer), "%s/%s", tdir, *filename);
+      msnprintf(buffer, sizeof(buffer), "%s/%s", tdir, *filename);
       Curl_safefree(*filename);
       *filename = strdup(buffer); /* clone the buffer */
       curl_free(tdir);

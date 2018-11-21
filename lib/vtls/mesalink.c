@@ -424,7 +424,7 @@ mesalink_recv(struct connectdata *conn, int num, char *buf, size_t buffersize,
 static size_t
 Curl_mesalink_version(char *buffer, size_t size)
 {
-  return snprintf(buffer, size, "MesaLink/%s", MESALINK_VERSION_STRING);
+  return msnprintf(buffer, size, "MesaLink/%s", MESALINK_VERSION_STRING);
 }
 
 static int

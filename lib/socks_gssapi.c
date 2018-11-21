@@ -151,7 +151,7 @@ CURLcode Curl_SOCKS5_gssapi_negotiate(int sockindex,
       return CURLE_OUT_OF_MEMORY;
     service.length = serviceptr_length +
       strlen(conn->socks_proxy.host.name) + 1;
-    snprintf(service.value, service.length + 1, "%s@%s",
+    msnprintf(service.value, service.length + 1, "%s@%s",
              serviceptr, conn->socks_proxy.host.name);
 
     gss_major_status = gss_import_name(&gss_minor_status, &service,

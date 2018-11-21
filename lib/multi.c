@@ -634,7 +634,7 @@ static CURLcode multi_done(struct connectdata **connp,
   else {
     char buffer[256];
     /* create string before returning the connection */
-    snprintf(buffer, sizeof(buffer),
+    msnprintf(buffer, sizeof(buffer),
              "Connection #%ld to host %s left intact",
              conn->connection_id,
              conn->bits.socksproxy ? conn->socks_proxy.host.dispname :
